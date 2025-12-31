@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PETROPERÚ - Petróleos del Perú S.A.</title>
+
+  <style>
+    :root{
+      --rojo:#b11226;
+      --amarillo:#f4c430;
+      --gris:#f4f6f8;
+      --oscuro:#222;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box;}
+
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      line-height:1.6;
+      color:var(--oscuro);
+    }
+
+    header{
+      background:var(--rojo);
+      color:#fff;
+      padding:20px 40px;
+      position:sticky;
+      top:0;
+      z-index:100;
+    }
+
+    .header-top{
+      display:flex;
+      align-items:center;
+      gap:15px;
+    }
+
+    .logo{
+      width:70px;
+      background:#fff;
+      padding:8px;
+      border-radius:8px;
+    }
+
+    nav ul{
+      list-style:none;
+      display:flex;
+      gap:20px;
+      margin-top:15px;
+      flex-wrap:wrap;
+    }
+
+    nav a{
+      color:var(--amarillo);
+      text-decoration:none;
+      font-weight:bold;
+    }
+
+    nav a:hover{ text-decoration:underline; }
+
+    .hero{
+      background:
+        linear-gradient(rgba(177,18,38,0.85),rgba(177,18,38,0.85)),
+        url(https://peru21.pe/sites/default/efsfiles/styles/teaser/public/2025-07/petroperu.jpeg?itok=52hU66ck)
+        center/cover no-repeat;
+      height:70vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      color:#fff;
+      padding:20px;
+    }
+
+    .hero h2{
+      font-size:42px;
+      color:var(--amarillo);
+      margin-bottom:10px;
+    }
+
+    .hero p{
+      font-size:20px;
+      max-width:800px;
+      margin:auto;
+    }
+
+    section{
+      padding:60px 40px;
+      max-width:1200px;
+      margin:auto;
+    }
+
+    section h3{
+      font-size:30px;
+      margin-bottom:20px;
+      color:var(--rojo);
+      border-left:6px solid var(--amarillo);
+      padding-left:12px;
+    }
+
+    ul{ margin-left:20px; }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:20px;
+    }
+
+    .card{
+      background:var(--gris);
+      border-radius:10px;
+      overflow:hidden;
+      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .card img{
+      width:100%;
+      height:200px;
+      object-fit:cover;
+    }
+
+    .card div{ padding:20px; }
+
+    footer{
+      background:var(--rojo);
+      color:#fff;
+      text-align:center;
+      padding:30px 20px;
+      margin-top:40px;
+    }
+
+    footer span{ color:var(--amarillo); font-weight:bold; }
+
+    @media(max-width:600px){
+      .hero h2{font-size:30px;}
+      section{padding:40px 20px;}
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-top">
+    <img src="data:image/png;base64,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" alt="Logo Petroperú" class="logo">
+    <div>
+      <h1>PETROPERÚ</h1>
+      <p>Petróleos del Perú S.A.</p>
+    </div>
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="#empresa">Empresa</a></li>
+      <li><a href="#historia">Historia</a></li>
+      <li><a href="#mision">Misión y Visión</a></li>
+      <li><a href="#valores">Valores</a></li>
+      <li><a href="#gobierno">Gobierno</a></li>
+      <li><a href="#operaciones">Operaciones</a></li>
+      <li><a href="#responsabilidad">RSE</a></li>
+      <li><a href="#medioambiente">Medio Ambiente</a></li>
+      <li><a href="#marcolegal">Marco Legal</a></li>
+      <li><a href="#transparencia">Transparencia</a></li>
+      <li><a href="#calidad">Calidad</a></li>
+      <li><a href="#usuarios">Usuarios</a></li>
+      <li><a href="#ubicacion">Ubicación</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <div>
+    <h2>Energía para el desarrollo del Perú</h2>
+    <p>Empresa estatal estratégica dedicada a la refinación, transporte, comercialización y almacenamiento de hidrocarburos.</p>
+  </div>
+</section>
+
+<section id="empresa">
+  <h3>¿Quiénes Somos?</h3>
+  <p>PETROPERÚ es una empresa estatal de derecho privado que desarrolla actividades en la cadena de hidrocarburos, contribuyendo a la seguridad energética nacional.</p>
+</section>
+
+<section id="historia">
+  <h3>Historia Institucional</h3>
+  <p>Desde su creación, PETROPERÚ ha desempeñado un rol clave en la administración de los recursos energéticos del país, fortaleciendo la infraestructura y el abastecimiento nacional.</p>
+</section>
+
+<section id="mision">
+  <h3>Misión y Visión</h3>
+  <p><strong>Misión:</strong> Gestionar los hidrocarburos con eficiencia, seguridad y sostenibilidad.</p>
+  <p><strong>Visión:</strong> Ser una empresa líder del sector energético, comprometida con el desarrollo del Perú.</p>
+</section>
+
+<section id="valores">
+  <h3>Valores Institucionales</h3>
+  <ul>
+    <li>Integridad</li>
+    <li>Transparencia</li>
+    <li>Responsabilidad social</li>
+    <li>Seguridad</li>
+    <li>Sostenibilidad</li>
+  </ul>
+</section>
+
+<section id="gobierno">
+  <h3>Gobierno Corporativo</h3>
+  <p>La empresa se rige por principios de buen gobierno corporativo, asegurando una gestión ética, eficiente y alineada a la normativa vigente.</p>
+</section>
+
+<section id="operaciones">
+  <h3>Principales Operaciones</h3>
+  <div class="grid">
+    <div class="card">
+      <img src="https://www.petroperu.com.pe/Storage/galleries_files/file/1106-o2Hf7Jf9Af4Wb6H.jpg">
+      <div>
+        <h4>Refinación</h4>
+        <p>Procesamiento de hidrocarburos para el mercado nacional.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src=https://www.petroperu.com.pe/Storage/modsnw/image/2834-q5Yo9Pz1Ph8Ab2S.jpg 
+        <h4>Transporte</h4>
+        <p>Operación de oleoductos y terminales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="responsabilidad">
+  <h3>Responsabilidad Social Empresarial</h3>
+  <p>PETROPERÚ ejecuta programas sociales orientados al desarrollo comunitario y la educación energética.</p>
+</section>
+
+<section id="medioambiente">
+  <h3>Seguridad, Salud y Medio Ambiente</h3>
+  <p>La empresa prioriza la protección ambiental y la seguridad operativa en todas sus actividades.</p>
+</section>
+
+<section id="marcolegal">
+  <h3>Marco Legal</h3>
+  <ul>
+    <li>Ley Orgánica de Hidrocarburos</li>
+    <li>Normativa de OSINERGMIN</li>
+    <li>Reglamentos ambientales y de seguridad</li>
+  </ul>
+</section>
+
+<section id="transparencia">
+  <h3>Transparencia Institucional</h3>
+  <p>PETROPERÚ promueve la rendición de cuentas y el acceso a la información pública.</p>
+</section>
+
+<section id="calidad">
+  <h3>Indicadores de Calidad</h3>
+  <ul>
+    <li>Continuidad operativa</li>
+    <li>Seguridad industrial</li>
+    <li>Gestión ambiental</li>
+    <li>Atención a usuarios y clientes</li>
+  </ul>
+</section>
+
+<section id="usuarios">
+  <h3>Derechos y Deberes de los Usuarios</h3>
+  <p><strong>Derechos:</strong></p>
+  <ul>
+    <li>Acceso a información clara</li>
+    <li>Atención de reclamos</li>
+  </ul>
+  <p><strong>Deberes:</strong></p>
+  <ul>
+    <li>Uso responsable de productos</li>
+    <li>Cumplimiento contractual</li>
+  </ul>
+</section>
+
+<section id="ubicacion">
+  <h3>Ubicación – Oficina Principal</h3>
+  <p>San Isidro, Lima – Perú</p>
+
+  <div style="margin-top:30px;width:100%;height:450px;border:4px solid #f4c430;border-radius:12px;overflow:hidden;">
+    <iframe
+      src="https://www.google.com/maps?q=Petroperu%20San%20Isidro%20Lima&output=embed"
+      width="100%" height="100%" style="border:0;" loading="lazy">
+    </iframe>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 <span>PETROPERÚ</span> – Petróleos del Perú S.A.</p>
+  <p>Página institucional referencial con fines académicos.</p>
+</footer>
+
+</body>
+</html>
